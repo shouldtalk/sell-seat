@@ -1,5 +1,14 @@
 <template>
 <div>
-    <h1>这是正在播放电影</h1>
+     <FilmListTopNav></FilmListTopNav>
+        <router-view></router-view>
 </div>
 </template>
+<script>
+import FilmListTopNav from '@/components/FilmListTopNav'
+export default {
+    components: {
+        FilmListTopNav
+    }
+}
+</script>
