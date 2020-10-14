@@ -41,10 +41,10 @@ export default {
     border-top: 1px solid #ccc;
     height: 50px;
     text-align: center;
-    background: #fff;
+    background:white !important;
+    z-index: 998;
     color: #7a7e83;
     width: 100%;
-
     ul {
         display: flex;
         align-items: center;

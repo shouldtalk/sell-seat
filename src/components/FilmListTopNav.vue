@@ -17,6 +17,8 @@ nav {
     height: 50px;
     line-height: 50px;
     border-bottom: 1px solid #ccc;
+     background: white;
+    z-index: 999;
     ul {
         display: flex;
         text-align: center;
