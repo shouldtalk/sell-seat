@@ -9,4 +9,5 @@ export const detailUri =
     "/gateway?k=2563678&filmId=";
  export const cinemaListUrl = "gateway?cityId=310100&ticketFlag=1&k=1424691";
  export const cityListUrl = "gateway?k=3833247";
- 
+ export const loginUrl = "http://188.131.154.188:3000/api/v1/login";
+ export const centerUrl = "http://188.131.154.188:3000/api/v1/user_info";

@@ -19,10 +19,16 @@ axios.interceptors.request.use(
             // 列表信息的头
             host = "mall.film-ticket.film.list";
         }
-        config.headers = {
-            "X-Client-Info":   '{"a":"3000","ch":"1002","v":"5.0.4","e":"16023043652971546138181635","bc":"310100"}',
-            "X-Host": host,
-        };
+        if (config.headers.authorization) {
+            config.headers = {
+                'authorization': config.headers.authorization,
+            };
+        } else {
+            config.headers = {
+                "X-Client-Info":'{"a":"3000","ch":"1002","v":"5.0.4","e":"16006566672048699400193","bc":"110100"}',
+                "X-Host": host,
+            };
+        }
         return config;
     },
     function(error) {

@@ -1,6 +1,6 @@
 <template>
 <div>
-     <FilmListTopNav :class="fixed ? 'fixed' : ''"></FilmListTopNav>
+     <FilmListTopNav class="fixed"></FilmListTopNav>
         <router-view></router-view>
 </div>
 </template>
@@ -15,22 +15,6 @@ export default {
     },
     components: {
         FilmListTopNav
-    },
-     mounted() {
-        window.addEventListener(
-            "scroll",
-            (e) => {
-                let top = document.documentElement.scrollTop;
-                if (top > 150) {
-                    // 吸顶
-                    this.fixed = true;
-                } else {
-                    // 还原
-                    this.fixed = false;
-                }
-            },
-            true
-        );
     },
 }
 </script>

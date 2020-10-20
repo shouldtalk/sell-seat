@@ -1,4 +1,5 @@
 <template>
+<div  class="scroll" :style="{ height: height + 'px' }">
   <div class="detail">
     <div class="goBack" @click="goBack">
       <img
@@ -41,21 +42,34 @@
       </div>
     </Swiper>
   </div>
+</div>
 </template>
 <script>
 import { detailData } from "@/api/api.js";
 import Swiper from "@/components/Swiper";
+import BScroll from "better-scroll";
 const moment = require("moment");
 export default {
   data() {
     return {
       item: { actors: [], photos: [] },
+      height: 0,
     };
   },
   async mounted() {
     let ret = await detailData(this.$route.params.filmId);
-    console.log(ret.data.data.film);
     this.item = ret.data.data.film;
+     this.height = document.documentElement.clientHeight;
+  },
+  updated() {
+    this.bs = new BScroll(".scroll", {
+      // 激活上滑的监听事件
+      pullUpLoad: true,
+      // 激活下滑的监听事件
+      // pullDownRefresh: true,
+      // 默认情况下使用bs后，它会禁止浏览器的点击事件
+      click: true,
+    });
   },
   filters: {
     parseDate: function (value) {
@@ -80,6 +94,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.scroll{
+  overflow: hidden;
 .detail {
   .img {
     width: 100%;
@@ -105,5 +121,5 @@ export default {
   img{
       width: 30px;
   }
-}
+}}
 </style>

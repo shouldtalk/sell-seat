@@ -1,13 +1,13 @@
 <template>
     <div class="list scroll" :style="{height: height + 'px'}">
-      <div>
+      <div      ref='huxing'>
            <Loading v-if="loading"></Loading>
          
          <div
             class="item"
             v-else
             v-for="(item, index) in data"
-            @click="goDetail(item.filmId)"
+            @click="goDetail($event,item.filmId)"
             :key="index"
         >
             <div class="left">
@@ -34,7 +34,8 @@
 <script>
 import Loading from '@/components/Loading';
 import BScroll from "better-scroll";
-import {nowPlayingListData,comingSoonListData} from '@/api/api.js'
+import {nowPlayingListData,comingSoonListData} from '@/api/api.js';
+/* import fastclick from 'fastclick' */
 export default {
     data() {
         return {
@@ -66,12 +67,11 @@ export default {
         },
     },
     methods: {
-        goDetail: function(filmId) {
+        goDetail: function(e,filmId) {
             this.$router.push({ name: "detail", params: { filmId } });
         },
         getData: async function(){
              this.page++ ;
-             console.log(this.page)
             if(this.type == 1){
                 var ret = await nowPlayingListData(this.page)
             }else{
@@ -123,6 +123,7 @@ export default {
 <style lang="scss" scoped>
 .list{
     margin-bottom: 50px;
+    margin-top: 50px;
     .item {
     margin-top: 15px;
     padding-bottom: 15px;
